@@ -1,2 +1,3 @@
-﻿# University Projects 🎓
-Collection of coursework and labs.
+﻿# Systems & Engineering Projects
+
+Selected projects spanning computer architecture, data engineering, software development, and hardware/software systems.
