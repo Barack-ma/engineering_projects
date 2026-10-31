@@ -1,15 +1,13 @@
 # ECE 372A — Embedded Systems Lab Portfolio
 
-Three independently completed AVR C++ coursework labs targeting the ATmega2560 (Arduino Mega 2560).
+Three individual labs targeting the ATmega2560 (Arduino Mega 2560), demonstrating progressive development from direct GPIO manipulation to timer peripherals, interrupt handling and an HD44780 LCD driver.
 
-| Project | Skills |
-| --- | --- |
-| [Lab 1: GPIO LED Patterns](gpio-led-patterns/) | AVR GPIO, register manipulation, switches and LED animation |
-| [Lab 2: Timer and Interrupt Binary Counter](timer-interrupt-binary-counter/) | Timer0 CTC, pin-change interrupts, state-machine debouncing |
-| [Lab 3: LCD and Timer Interface](lcd-timer-interrupt-interface/) | HD44780 4-bit LCD driver, Timer0/Timer1, interrupt-driven switches |
+| Lab | Focus | Core skills |
+| --- | --- | --- |
+| [Lab 1 — GPIO LED patterns](gpio-led-patterns/) | Switch-controlled LED animation | AVR GPIO registers, masking, pull-up input |
+| [Lab 2 — Timer and interrupt binary counter](timer-interrupt-binary-counter/) | LED binary count, mode switching | Timer0 CTC, pin-change ISR, debounce state machine |
+| [Lab 3 — LCD interface](lcd-timer-interrupt-interface/) | LCD mode display and binary counter | HD44780 4-bit interface, Timer0/Timer1, ISR |
 
-These are individual lab projects, not a completed production firmware system. Hardware testing has not been independently reproduced for this portfolio. Build instructions and wiring notes are in each project's README.
+All three projects include their own PlatformIO configuration and source files. See each lab's README for wiring, build instructions, implementation notes, and current verification limitations.
 
-**Publication status:** Documentation is published here. Source files are being staged separately; do not assume a complete compilable source tree is present until the `src/` files and `platformio.ini` are committed.
-
-Course-provided handouts, build outputs, student numbers and generated files have been excluded. Source may retain course starter scaffolding; check applicable course sharing rules.
+**Portfolio cleanup:** Course requirement PDFs, downloaded datasheets, compiled firmware, IDE metadata and student identifiers have been omitted. Academic publishing permissions should be confirmed before redistributing source from coursework.
