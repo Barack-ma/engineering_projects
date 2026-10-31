@@ -1,37 +1,48 @@
-# Lab 3 — HD44780 LCD, Timers and Interrupts
+# HD44780 LCD Interface with Timers and Interrupts
 
-**ECE 372A · Individual project · AVR C++ · Arduino Mega 2560 (ATmega2560)**
+**University of Arizona · ECE 372A · Individual lab 3 · AVR C++ · ATmega2560 / Arduino Mega 2560**
 
-An LCD-enhanced four-bit LED counter. A direct-register LCD driver sends HD44780 commands in 4-bit mode. Timer0 and Timer1 provide millisecond and microsecond delay routines; pin-change interrupts handle a speed-mode switch.
+## Overview
 
-## Hardware interface
+Builds on the binary LED counter with a direct-register, 4-bit HD44780-compatible LCD driver and two timer peripherals: Timer0 for millisecond delays and Timer1 for microsecond delays. The LCD displays the selected mode.
 
-- LCD DB4–DB7: PA0–PA3; RS: PA6; E: PA7
-- Four binary LEDs: PD0–PD3
-- Mode-switch input: PB3
+## Skills demonstrated
 
-Check the full physical schematic, power, LCD contrast and peripheral wiring before connecting hardware.
+4-bit LCD signaling, peripheral register control, timer compare-match polling, interrupt-driven input. This implementation uses AVR registers directly rather than Arduino's high-level GPIO APIs.
 
-## Source organization
+## Hardware connections
 
-- `main.cpp` — mode state machine, 4-bit counter and interrupt handler
-- `lcd.cpp/.h` — initialization, commands, character/string output
-- `timer.cpp/.h` — Timer0 and Timer1 delay helpers
-- `led.cpp/.h` — binary LED outputs
-- `switch.cpp/.h` — pin-change input setup
+LCD data DB4–DB7: PA0–PA3; RS: PA6; E: PA7; switch: PB3; four binary LEDs: PD0–PD3. Consult the physical schematic before wiring.
 
-## Build
+## Build and flash
 
-Use PlatformIO with `board = megaatmega2560`:
+This project uses PlatformIO with `board = megaatmega2560` and the Arduino framework for startup/toolchain integration. Source code uses AVR peripheral headers.
 
-```sh
+```bash
 python -m pip install platformio
 pio run
 pio run --target upload
 ```
 
-**Source publication is in progress.** Build requires the project `platformio.ini` and complete `src/` directory.
+Run these commands from this project's directory. Upload requires a connected Arduino Mega 2560 and a correctly selected serial port.
 
-## Verification
+## Source layout
 
-Code review confirms LCD signaling and timer routines exist; no independently verified hardware test, oscilloscope trace, or measured timing result is claimed.
+- `src/main.cpp` — application behavior and initialization
+- `src/led.cpp` / `src/led.h` — LED output configuration and control
+- `src/switch.cpp` / `src/switch.h` — switch input configuration
+- `src/timer.cpp` / `src/timer.h` — hardware timer initialization and delay helpers
+- `src/lcd.cpp` / `src/lcd.h` — 4-bit LCD protocol and display utilities
+- `platformio.ini` — PlatformIO target configuration
+
+## Implementation notes
+
+**Lab 3:** A software state machine and pin-change ISR select modes. Timer0/Timer1 timing is polling-based; LCD code implements HD44780 initialization and nibble transfers.
+
+## Verification and limitations
+
+The submitted source tree contained a generated firmware build, but **I have not independently rebuilt or hardware-tested this cleaned portfolio copy**. This repository currently contains source code and setup information rather than oscilloscope captures, test reports, or demo photos. Add verified outcomes or hardware evidence when available.
+
+## Attribution
+
+Uploaded as an individual ECE 372A lab implementation. University assignment handouts, provided datasheets, personal student identifiers, and generated build artifacts are intentionally excluded. Code comments may retain assignment-oriented guidance from the supplied starter project.
