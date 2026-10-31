@@ -10,4 +10,4 @@ Three individual labs targeting the ATmega2560 (Arduino Mega 2560), demonstratin
 
 All three projects include their own PlatformIO configuration and source files. See each lab's README for wiring, build instructions, implementation notes, and current verification limitations.
 
-**Portfolio cleanup:** Course requirement PDFs, downloaded datasheets, compiled firmware, IDE metadata and student identifiers have been omitted. Academic publishing permissions should be confirmed before redistributing source from coursework.
+
