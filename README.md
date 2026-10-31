@@ -18,12 +18,4 @@ Workspace for data-processing projects, including the Arizona air-quality ETL di
 
 [View the three ECE 372A lab guides](embedded-systems/). Technical documentation is published; compilable source files have not yet been committed to GitHub.
 
-## Repository organization
 
-- `computer-architecture/` — digital logic and RTL projects
-- `data-engineering/` — data-processing projects
-- `embedded-systems/` — planned location for public ECE 372A projects
-
-## Documentation goals
-
-Each project should include its objective, your contribution, hardware/software prerequisites, build and test instructions, and verification evidence. Descriptions will be updated as code and results are verified.
