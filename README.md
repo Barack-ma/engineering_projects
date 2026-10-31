@@ -16,7 +16,7 @@ Workspace for data-processing projects, including the Arizona air-quality ETL di
 
 ### Embedded systems — ECE 372A
 
-Three independently completed course projects are being prepared for publication. Their source code and technical documentation will be added after checking course sharing restrictions.
+[View the three ECE 372A lab guides](embedded-systems/). Technical documentation is published; compilable source files have not yet been committed to GitHub.
 
 ## Repository organization
 
