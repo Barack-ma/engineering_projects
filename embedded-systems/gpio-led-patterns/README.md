@@ -1,30 +1,46 @@
-# Lab 1 — GPIO LED Patterns
+# GPIO LED Patterns and Button-Controlled Timing
 
-**ECE 372A · Individual project · AVR C++ · Arduino Mega 2560 (ATmega2560)**
+**University of Arizona · ECE 372A · Individual lab 1 · AVR C++ · ATmega2560 / Arduino Mega 2560**
 
-Eight LEDs on pins 4–11 run an inward/outward animation, with a switch on pin 22 (PA0) controlling timing. The implementation uses direct AVR I/O registers, direction masks, pull-ups, and blocking delays rather than high-level Arduino GPIO calls.
+## Overview
 
-## Hardware
+Eight LEDs on Arduino Mega 2560 pins 4–11 are driven directly via AVR GPIO registers. A switch on pin 22 (PA0) changes the delay between outward/inward moving LED pairs.
 
-- Eight external LEDs with current-limiting resistors on Mega pins 4–11
-- Switch between Mega pin 22 (PA0) and GND
+## Skills demonstrated
 
-## Build
+GPIO direction registers, bit manipulation, switch pull-up, delay-based scheduling. This implementation uses AVR registers directly rather than Arduino's high-level GPIO APIs.
 
-PlatformIO target: `megaatmega2560` with Arduino framework.
+## Hardware connections
 
-```sh
+LEDs: pins 4–11; switch: pin 22 (PA0) to ground; external LEDs need series resistors.
+
+## Build and flash
+
+This project uses PlatformIO with `board = megaatmega2560` and the Arduino framework for startup/toolchain integration. Source code uses AVR peripheral headers.
+
+```bash
 python -m pip install platformio
 pio run
 pio run --target upload
 ```
 
-Run from the project directory after checking wiring and upload serial port. **Source publication is in progress; these commands require `platformio.ini` and `src/` files.**
+Run these commands from this project's directory. Upload requires a connected Arduino Mega 2560 and a correctly selected serial port.
 
-## Modules
+## Source layout
 
-`main.cpp` — application loop; `led.cpp/.h` — GPIO/LED patterns; `switch.cpp/.h` — switch input.
+- `src/main.cpp` — application behavior and initialization
+- `src/led.cpp` / `src/led.h` — LED output configuration and control
+- `src/switch.cpp` / `src/switch.h` — switch input configuration
+- `platformio.ini` — PlatformIO target configuration
 
-## Verification
+## Implementation notes
 
-Generated firmware existed in the original submission, but this GitHub version has not been independently rebuilt or tested on hardware. No performance measurements or test waveforms are claimed.
+**Lab 1:** The LED animation uses blocking `_delay_ms` calls; speed is read each cycle.
+
+## Verification and limitations
+
+The submitted source tree contained a generated firmware build, but **I have not independently rebuilt or hardware-tested this cleaned portfolio copy**. This repository currently contains source code and setup information rather than oscilloscope captures, test reports, or demo photos. Add verified outcomes or hardware evidence when available.
+
+## Attribution
+
+Uploaded as an individual ECE 372A lab implementation. University assignment handouts, provided datasheets, personal student identifiers, and generated build artifacts are intentionally excluded. Code comments may retain assignment-oriented guidance from the supplied starter project.
