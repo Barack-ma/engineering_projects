@@ -1,28 +1,47 @@
-# Lab 2 — Timer and Interrupt Binary Counter
+# Timer0, Pin-Change Interrupts and Binary LED Counter
 
-**ECE 372A · Individual project · AVR C++ · Arduino Mega 2560 (ATmega2560)**
+**University of Arizona · ECE 372A · Individual lab 2 · AVR C++ · ATmega2560 / Arduino Mega 2560**
 
-A four-bit counter displays values 0–15 on LEDs connected to PA0–PA3 (Mega pins 22–25). Timer0 in CTC mode provides nominal 1 ms tick delays. A switch on PB3 (Mega pin 50), configured using a pull-up and pin-change interrupt, toggles nominal 100 ms / 200 ms count rates through a debounce state machine.
+## Overview
 
-## Modules
+A four-bit binary counter displays values 0–15 on four LEDs. Timer0 in CTC mode supplies millisecond timing; a switch on PB3 uses a pin-change ISR and a debounced state machine to change between 100 ms and 200 ms nominal intervals.
 
-- `main.cpp`: counter and debounce state machine, `PCINT0_vect` interrupt service routine
-- `led.cpp/.h`: output register configuration and four-bit masking
-- `timer.cpp/.h`: Timer0 register setup and compare-match polling
-- `switch.cpp/.h`: PB3 input and pin-change interrupt initialization
+## Skills demonstrated
 
-## Build
+Timer0 CTC configuration, interrupt service routines, debouncing state machines, bit masking. This implementation uses AVR registers directly rather than Arduino's high-level GPIO APIs.
 
-Use PlatformIO target `megaatmega2560` and the Arduino framework:
+## Hardware connections
 
-```sh
+LEDs: PA0–PA3 (Mega pins 22–25); switch: PB3 (Mega pin 50) to ground with internal pull-up.
+
+## Build and flash
+
+This project uses PlatformIO with `board = megaatmega2560` and the Arduino framework for startup/toolchain integration. Source code uses AVR peripheral headers.
+
+```bash
 python -m pip install platformio
 pio run
 pio run --target upload
 ```
 
-**Source publication is in progress.** A complete build requires the project `platformio.ini` and all `src/` files.
+Run these commands from this project's directory. Upload requires a connected Arduino Mega 2560 and a correctly selected serial port.
 
-## Verification
+## Source layout
 
-Nominal rates are code-derived, not independently measured. Debounce latency is influenced by the blocking timing loop; hardware verification has not been reproduced.
+- `src/main.cpp` — application behavior and initialization
+- `src/led.cpp` / `src/led.h` — LED output configuration and control
+- `src/switch.cpp` / `src/switch.h` — switch input configuration
+- `src/timer.cpp` / `src/timer.h` — hardware timer initialization and delay helpers
+- `platformio.ini` — PlatformIO target configuration
+
+## Implementation notes
+
+**Lab 2:** Timer0 polling is used for delays, and the ISR advances button state. Debounce and latency are influenced by the blocking delay loop.
+
+## Verification and limitations
+
+The submitted source tree contained a generated firmware build, but **I have not independently rebuilt or hardware-tested this cleaned portfolio copy**. This repository currently contains source code and setup information rather than oscilloscope captures, test reports, or demo photos. Add verified outcomes or hardware evidence when available.
+
+## Attribution
+
+Uploaded as an individual ECE 372A lab implementation. University assignment handouts, provided datasheets, personal student identifiers, and generated build artifacts are intentionally excluded. Code comments may retain assignment-oriented guidance from the supplied starter project.
