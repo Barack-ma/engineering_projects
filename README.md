@@ -1,6 +1,6 @@
 # Engineering Projects
 
-A collection of engineering work covering digital hardware, computer architecture, data engineering, and (as projects are added) embedded systems.
+A collection of engineering work covering digital hardware, computer architecture, data engineering, and embedded systems.
 
 ## Projects
 
@@ -16,6 +16,12 @@ Workspace for data-processing projects, including the Arizona air-quality ETL di
 
 ### Embedded systems — ECE 372A
 
-[View the three ECE 372A lab guides](embedded-systems/). Technical documentation is published; compilable source files have not yet been committed to GitHub.
+[View the five ECE 372A lab projects](embedded-systems/). Each includes technical documentation, source files, and a PlatformIO configuration.
+
+**[Lab 4 — ADC/PWM motor control](embedded-systems/adc-pwm-motor-control/)**  
+Potentiometer-controlled bidirectional DC motor with ADC sampling, timer-based PWM, and a timed stop/countdown.
+
+**[Lab 5 — IMU tilt alarm](embedded-systems/imu-led-matrix-alarm/)**  
+MPU-6050 tilt detection using I²C, an SPI-driven LED matrix, and a latched piezo alarm.
 
 
